@@ -8,7 +8,7 @@ import { Products } from '@/@types/store'
 
 export const action = createSafeActionClient()
 
-export async function fetchProducts(): Promise<Products[] | null> {
+const fetchProducts = async (): Promise<Products[] | null> => {
   try {
     const response = await api.get('/products', {
       params: {
@@ -25,3 +25,5 @@ export async function fetchProducts(): Promise<Products[] | null> {
     return null
   }
 }
+
+export { fetchProducts }
