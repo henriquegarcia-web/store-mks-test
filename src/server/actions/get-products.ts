@@ -8,14 +8,20 @@ import { Products } from '@/@types/store'
 
 export const action = createSafeActionClient()
 
-export async function fetchProducts(): Promise<Products[] | undefined> {
+export async function fetchProducts(): Promise<Products[] | null> {
   try {
-    const response = await api.get(
-      'https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=5&sortBy=id&orderBy=ASC'
-    )
+    const response = await api.get('/products', {
+      params: {
+        page: 1,
+        rows: 12,
+        sortBy: 'id',
+        orderBy: 'ASC'
+      }
+    })
     const data = await response.data
-    return data.products
+    return data.products || null
   } catch (error) {
     console.log(error)
+    return null
   }
 }
