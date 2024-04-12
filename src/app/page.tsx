@@ -1,5 +1,27 @@
-import styles from './page.module.scss'
+import { Header, ProductList } from '@/components'
 
-export default function Home() {
-  return <main className={styles.main}></main>
+import {
+  QueryClient,
+  HydrationBoundary,
+  dehydrate
+} from '@tanstack/react-query'
+
+import { fetchProducts } from '@/server/actions/get-products'
+
+export default async function StorePage() {
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts
+  })
+
+  return (
+    <main>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Header />
+        <ProductList />
+      </HydrationBoundary>
+    </main>
+  )
 }

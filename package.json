@@ -6,13 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "test --watch"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-query-devtools": "^5.29.2",
     "axios": "^1.6.8",
     "next": "14.2.0",
+    "next-safe-action": "^6.2.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-query": "^3.39.3",
     "sass": "^1.75.0"
   },
   "devDependencies": {

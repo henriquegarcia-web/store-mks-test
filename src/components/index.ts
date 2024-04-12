@@ -1,3 +1,8 @@
-import Header from './Header'
+// ===================================== COMPONENTS
 
-export { Header }
+import Header from './Header'
+import ProductList from './ProductList'
+
+// ===================================== EXPORTS
+
+export { Header, ProductList }

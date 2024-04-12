@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+import path from 'path'
+
 const nextConfig = {
   //   experimental: {
   //     missingSuspenseWithCSRBailout: false,
   //   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')]
+    includePaths: [path.join(import.meta.url, 'styles')]
   }
 }
 
