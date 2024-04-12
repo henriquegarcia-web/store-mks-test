@@ -1,3 +1,5 @@
+import styles from './styles.module.scss'
+
 import { Header, ProductList } from '@/components'
 
 import {
@@ -17,7 +19,7 @@ export default async function StorePage() {
   })
 
   return (
-    <main>
+    <main className={styles.store_page}>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Header />
         <ProductList />
