@@ -11,7 +11,13 @@ const ProductListSkeleton = () => {
     return productCards
   }
 
-  return renderProductListSkeleton()
+  return (
+    <div className={styles.product_list}>
+      <div className={styles.product_list__wrapper}>
+        {renderProductListSkeleton()}
+      </div>
+    </div>
+  )
 }
 
 export default ProductListSkeleton

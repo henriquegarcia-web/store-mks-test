@@ -3,44 +3,44 @@
 .minicart {
   position: relative;
   display: flex;
-}
 
-.minicart__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 6px;
-  padding: 10px 15px;
-  border-radius: $border-radius;
-  cursor: pointer;
-  transition: $transition;
+  .minicart__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 6px;
+    padding: 10px 15px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: $transition;
 
-  img {
-    margin-right: 2px;
+    img {
+      margin-right: 2px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    background-color: $color-white;
+    color: $color-black;
+
+    &:hover {
+      background-color: $color-white-hover;
+    }
   }
 
-  p {
-    font-size: 16px;
-    font-weight: 700;
+  .minicart__animation {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+
+    box-shadow: 0 0 12px $color-shadow-hover;
+    background-color: $color-main;
   }
-
-  background-color: $color-white;
-  color: $color-black;
-
-  &:hover {
-    background-color: $color-white-hover;
-  }
-}
-
-.minicart__animation {
-  z-index: 100;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  max-width: 480px;
-  height: 100vh;
-
-  box-shadow: 0 0 12px $color-shadow-hover;
-  background-color: $color-main;
 }

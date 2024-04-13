@@ -16,16 +16,14 @@ const ProductList = () => {
     isLoading
   } = useGetProducts()
 
+  if (isLoading) return <ProductListSkeleton />
+
   return (
     <div className={styles.product_list}>
       <div className={styles.product_list__wrapper}>
-        {isLoading ? (
-          <ProductListSkeleton />
-        ) : (
-          posts?.map((product: IProduct) => (
-            <ProductCard key={product.id} productData={product} />
-          ))
-        )}
+        {posts?.map((product: IProduct) => (
+          <ProductCard key={product.id} productData={product} />
+        ))}
       </div>
     </div>
   )
