@@ -66,6 +66,9 @@ input {
   }
 }
 
-.spin {
+.icon_Loading {
+  font-size: 20px;
+  color: $color-text;
+
   animation: spin 1s linear infinite;
 }

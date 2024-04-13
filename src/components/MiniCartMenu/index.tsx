@@ -9,14 +9,9 @@ import { formatCurrency } from '@/utils/functions/formatCurrency'
 interface IMiniCartMenu {
   handleCloseCart: () => void
   cartDetails: ICartDetails
-  handleDeleteCartItem: (productId: number) => void
 }
 
-const MiniCartMenu = ({
-  handleCloseCart,
-  cartDetails,
-  handleDeleteCartItem
-}: IMiniCartMenu) => {
+const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
   return (
     <div className={styles.minicart_menu}>
       <div className={styles.minicart_menu__header}>
@@ -32,11 +27,7 @@ const MiniCartMenu = ({
         <div className={styles.minicart_menu__content_wrapper}>
           <div className={styles.minicart_menu__content_products}>
             {cartDetails.cartProducts.map((product: ICartProduct) => (
-              <MiniCartCard
-                key={product.id}
-                productData={product}
-                handleDeleteCartItem={handleDeleteCartItem}
-              />
+              <MiniCartCard key={product.id} productData={product} />
             ))}
           </div>
         </div>

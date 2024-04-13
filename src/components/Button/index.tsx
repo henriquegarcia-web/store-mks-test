@@ -24,7 +24,7 @@ const Button = ({
       disabled={disabled || loading}
       onClick={onClick && onClick}
     >
-      {loading && <FiLoader className={`${styles.button__Loading} spin`} />}
+      {loading && <FiLoader className="icon_Loading" />}
       {icon && !loading && icon}
 
       {label}

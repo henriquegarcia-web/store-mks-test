@@ -81,6 +81,34 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     [cartProducts]
   )
 
+  const updateCartProductQuantity = useCallback(
+    (productId: number, quantityModifier: number) => {
+      const updatedCartProducts = cartProducts
+        .map((item: ICartProduct) => {
+          if (item.id === productId) {
+            const newQuantity = Math.max(item.quantity + quantityModifier, 0)
+            if (newQuantity === 0) {
+              return null
+            } else {
+              return {
+                ...item,
+                quantity: newQuantity
+              }
+            }
+          }
+          return item
+        })
+        .filter((item): item is ICartProduct => item !== null)
+
+      setCartProducts(updatedCartProducts)
+      localStorage.setItem(
+        'mksCartItems',
+        JSON.stringify(updatedCartProducts.filter(Boolean))
+      )
+    },
+    [cartProducts]
+  )
+
   // ========================================================================
 
   useEffect(() => {
@@ -113,9 +141,10 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       handleOpenCart,
       handleCloseCart,
       handleAddProductToCart,
-      handleDeleteCartItem
+      handleDeleteCartItem,
+      updateCartProductQuantity
     }
-  }, [isOpenCart, cartDetails, handleDeleteCartItem])
+  }, [isOpenCart, cartDetails, handleDeleteCartItem, updateCartProductQuantity])
 
   return (
     <CartContext.Provider value={CartContextData}>

@@ -6,8 +6,15 @@
   height: fit-content;
   border-radius: $border-radius;
   padding: 5px 0;
+  transition: $transition;
 
   border: 1px solid $color-gray;
+
+  &.input_disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: $color-disabled;
+  }
 
   .input_counter__decrease,
   .input_counter__increase {
@@ -24,6 +31,10 @@
     }
 
     background-color: transparent;
+
+    &:disabled {
+      pointer-events: none;
+    }
   }
 
   // .input_counter__decrease {

@@ -12,13 +12,8 @@ import useClickOutside from '@/hooks/useClickOutside'
 import { useCart } from '@/contexts/CartProvider'
 
 const MiniCart = () => {
-  const {
-    isOpenCart,
-    cartDetails,
-    handleToggleCart,
-    handleCloseCart,
-    handleDeleteCartItem
-  } = useCart()
+  const { isOpenCart, cartDetails, handleToggleCart, handleCloseCart } =
+    useCart()
 
   const miniCartMenuRef = useRef(null)
 
@@ -53,7 +48,6 @@ const MiniCart = () => {
             <MiniCartMenu
               handleCloseCart={handleCloseCart}
               cartDetails={cartDetails}
-              handleDeleteCartItem={handleDeleteCartItem}
             />
           </motion.div>
         )}
