@@ -8,6 +8,9 @@ const nextConfig = {
   //   },
   sassOptions: {
     includePaths: [path.join(import.meta.url, 'styles')]
+  },
+  images: {
+    domains: ['mks-sistemas.nyc3.digitaloceanspaces.com']
   }
 }
 
