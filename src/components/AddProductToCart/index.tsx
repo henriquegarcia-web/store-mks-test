@@ -23,7 +23,7 @@ const AddProductToCart = ({ productData }: IAddProductToCart) => {
     setTimeout(() => {
       handleAddProductToCart(product)
       setAddingProductToCart(false)
-    }, 2000)
+    }, 1000)
   }
 
   return (

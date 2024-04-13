@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { IoRemove, IoAdd } from 'react-icons/io5'
+import { IoRemove, IoAdd, IoTrashOutline } from 'react-icons/io5'
 import { FiLoader } from 'react-icons/fi'
 
 interface IInputCounter {
@@ -24,7 +24,7 @@ const InputCounter = ({
         disabled={addingProductToCart}
         onClick={() => handleDecreaseQuantity()}
       >
-        <IoRemove />
+        {initialQuantity === 1 ? <IoTrashOutline /> : <IoRemove />}
       </button>
       <span className={styles.input_counter__count}>
         {addingProductToCart ? (

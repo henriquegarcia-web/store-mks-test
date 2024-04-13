@@ -9,9 +9,10 @@ export interface ICartContextData {
   handleOpenCart: () => void
   handleCloseCart: () => void
   handleAddProductToCart: (product: IProduct) => void
-  handleDeleteCartItem: (productId: number) => void
+  handleDeleteCartItem: (product: IProduct) => void
   updateCartProductQuantity: (
-    productId: number,
+    product: IProduct,
     quantityModifier: number
   ) => void
+  handleFinalizePurchases: () => void
 }

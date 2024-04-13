@@ -59,7 +59,8 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       }
       storedCart.push(newProduct)
 
-      handleNotify('Produto adicionado ao carrinho.', 'success')
+      const noitfyMessage = `${product.name} adicionado ao carrinho.`
+      handleNotify(noitfyMessage, 'success')
     }
 
     localStorage.setItem('mksCartItems', JSON.stringify(storedCart))
@@ -68,30 +69,49 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const handleDeleteCartItem = useCallback(
-    (productId: number) => {
+    (product: IProduct) => {
       const itemIndex = cartProducts.findIndex(
-        (item: IProduct) => item.id === productId
+        (item: IProduct) => item.id === product.id
       )
 
       if (itemIndex !== -1) {
         cartProducts.splice(itemIndex, 1)
         localStorage.setItem('mksCartItems', JSON.stringify(cartProducts))
 
+        const noitfyMessage = `${product.name} removido do carrinho.`
+        handleNotify(noitfyMessage, 'warning')
+
         handleGetCartItems()
       } else {
-        console.error(`Item não encontrado no carrinho: ${productId}`)
+        handleNotify(
+          'Falha ao remover produto do carrinho. Tente novamente.',
+          'error'
+        )
       }
     },
     [cartProducts]
   )
 
+  const handleFinalizePurchases = () => {
+    setCartProducts([])
+    localStorage.removeItem('mksCartItems')
+
+    handleNotify(
+      'Compra finalizada com sucesso! O carrinho foi esvaziado.',
+      'success'
+    )
+  }
+
   const updateCartProductQuantity = useCallback(
-    (productId: number, quantityModifier: number) => {
+    (product: IProduct, quantityModifier: number) => {
       const updatedCartProducts = cartProducts
         .map((item: ICartProduct) => {
-          if (item.id === productId) {
+          if (item.id === product.id) {
             const newQuantity = Math.max(item.quantity + quantityModifier, 0)
             if (newQuantity === 0) {
+              const noitfyMessage = `${product.name} removido do carrinho.`
+              handleNotify(noitfyMessage, 'warning')
+
               return null
             } else {
               return {
@@ -142,7 +162,8 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       handleCloseCart,
       handleAddProductToCart,
       handleDeleteCartItem,
-      updateCartProductQuantity
+      updateCartProductQuantity,
+      handleFinalizePurchases
     }
   }, [isOpenCart, cartDetails, handleDeleteCartItem, updateCartProductQuantity])
 
