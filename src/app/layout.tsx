@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 
 import '@/utils/styles/globals.scss'
-import '@/utils/styles/variables.module.scss'
 
 import Providers from './providers'
 
