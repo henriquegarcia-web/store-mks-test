@@ -115,10 +115,6 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     handleGetCartItems()
   }, [])
 
-  useEffect(() => {
-    console.log(cartProducts)
-  }, [cartProducts])
-
   const cartDetails = useMemo(() => {
     const total = cartProducts.reduce((acc, product: any) => {
       return acc + parseFloat(product.price) * product.quantity

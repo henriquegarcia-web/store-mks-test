@@ -3,14 +3,18 @@
 import styles from './styles.module.scss'
 
 import { ProductCard } from '@/components'
-import { useGetProducts } from '@/hooks/getProducts'
+
+import { useGetProducts } from '@/hooks/useGetProducts'
 
 import { IProduct } from '@/@types/store'
 
 const ProductList = () => {
-  const { data: posts, error: postError, fetchStatus } = useGetProducts()
-
-  console.log(posts)
+  const {
+    data: posts,
+    error: postError,
+    fetchStatus,
+    isLoading
+  } = useGetProducts()
 
   return (
     <div className={styles.product_list}>
