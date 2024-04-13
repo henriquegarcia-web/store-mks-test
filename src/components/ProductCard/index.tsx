@@ -1,6 +1,12 @@
 import styles from './styles.module.scss'
 
-const ProductCard = () => {
+import { IProduct } from '@/@types/store'
+
+interface IProductCard {
+  productData: IProduct
+}
+
+const ProductCard = ({ productData }: IProductCard) => {
   return <div className={styles.product_card}>ProductCard</div>
 }
 

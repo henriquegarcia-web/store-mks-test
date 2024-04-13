@@ -4,11 +4,11 @@ import { createSafeActionClient } from 'next-safe-action'
 
 import { api } from '@/server'
 
-import { Products } from '@/@types/store'
+import { IProduct } from '@/@types/store'
 
 export const action = createSafeActionClient()
 
-const fetchProducts = async (): Promise<Products[] | null> => {
+const fetchProducts = async (): Promise<IProduct[] | null> => {
   try {
     const response = await api.get('/products', {
       params: {
