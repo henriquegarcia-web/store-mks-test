@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
-import { Button, ProductPrice } from '@/components'
+import { AddProductToCart, ProductPrice } from '@/components'
 
 import { IProduct } from '@/@types/store'
 
@@ -35,17 +35,7 @@ const ProductCard = ({ productData }: IProductCard) => {
         </p>
       </div>
       <div className={styles.product_card__cta}>
-        <Button
-          label="Comprar"
-          icon={
-            <Image
-              src="/shopping-bag.svg"
-              alt="Ícone do Botão de Compra"
-              width={16}
-              height={16}
-            />
-          }
-        />
+        <AddProductToCart productData={productData} />
       </div>
     </div>
   )

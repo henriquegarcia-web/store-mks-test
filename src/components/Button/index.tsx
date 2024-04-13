@@ -1,4 +1,5 @@
 import styles from './styles.module.scss'
+import { FiLoader } from 'react-icons/fi'
 
 interface IButton {
   type?: 'primary' | 'secondary'
@@ -23,7 +24,9 @@ const Button = ({
       disabled={disabled || loading}
       onClick={onClick && onClick}
     >
-      {icon && icon}
+      {loading && <FiLoader className={`${styles.button__Loading} spin`} />}
+      {icon && !loading && icon}
+
       {label}
     </button>
   )

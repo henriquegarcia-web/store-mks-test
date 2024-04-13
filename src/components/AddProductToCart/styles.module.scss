@@ -1,0 +1,23 @@
+@import '@/utils/styles/variables.module.scss';
+
+.logo {
+  display: flex;
+  column-gap: 5px;
+  align-items: flex-end;
+
+  b {
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300;
+
+    margin-bottom: 1px;
+  }
+
+  color: $color-white;
+}

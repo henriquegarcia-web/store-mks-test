@@ -14,10 +14,10 @@ import { useCart } from '@/contexts/CartProvider'
 const MiniCart = () => {
   const {
     isOpenCart,
-    cartQuantity,
+    cartDetails,
     handleToggleCart,
-    handleOpenCart,
-    handleCloseCart
+    handleCloseCart,
+    handleDeleteCartItem
   } = useCart()
 
   const miniCartMenuRef = useRef(null)
@@ -37,7 +37,9 @@ const MiniCart = () => {
           width={18}
           height={18}
         />
-        {cartQuantity !== 0 && <p>{cartQuantity}</p>}
+        {cartDetails.cartTotalCount !== 0 && (
+          <p>{cartDetails.cartTotalCount}</p>
+        )}
       </div>
       <AnimatePresence>
         {isOpenCart && (
@@ -48,7 +50,11 @@ const MiniCart = () => {
             transition={{ ease: 'easeOut', duration: 0.3 }}
             className={styles.minicart__animation}
           >
-            <MiniCartMenu handleCloseCart={handleCloseCart} />
+            <MiniCartMenu
+              handleCloseCart={handleCloseCart}
+              cartDetails={cartDetails}
+              handleDeleteCartItem={handleDeleteCartItem}
+            />
           </motion.div>
         )}
       </AnimatePresence>

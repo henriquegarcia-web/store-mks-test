@@ -34,4 +34,16 @@
       background-color: $color-black-hover;
     }
   }
+
+  .button__Loading {
+    svg {
+      font-size: 18px;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: $color-disabled;
+  }
 }

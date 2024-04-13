@@ -15,6 +15,7 @@ import MiniCartCard from './MiniCartCard'
 import ProductList from './ProductList'
 import ProductCard from './ProductCard'
 import ProductPrice from './ProductPrice'
+import AddProductToCart from './AddProductToCart'
 
 // ===================================== EXPORTS
 
@@ -29,5 +30,6 @@ export {
   MiniCartCard,
   ProductList,
   ProductCard,
-  ProductPrice
+  ProductPrice,
+  AddProductToCart
 }

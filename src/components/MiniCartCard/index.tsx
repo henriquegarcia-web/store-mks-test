@@ -5,14 +5,18 @@ import { IoCloseCircle } from 'react-icons/io5'
 
 import { InputCounter } from '@/components'
 
-import { IProduct } from '@/@types/store'
+import { ICartProduct } from '@/@types/store'
 import { formatCurrency } from '@/utils/functions/formatCurrency'
+import { useState } from 'react'
 
 interface IMiniCartCard {
-  productData: IProduct
+  productData: ICartProduct
+  handleDeleteCartItem: (productId: number) => void
 }
 
-const MiniCartCard = ({ productData }: IMiniCartCard) => {
+const MiniCartCard = ({ productData, handleDeleteCartItem }: IMiniCartCard) => {
+  // const [tesete, ete] = useState()
+
   return (
     <div className={styles.minicart_card}>
       <div className={styles.minicart_card__image}>
@@ -26,7 +30,7 @@ const MiniCartCard = ({ productData }: IMiniCartCard) => {
       <div className={styles.minicart_card__details}>
         <div className={styles.minicart_card__name}>{productData.name}</div>
         <div className={styles.minicart_card__counter}>
-          <InputCounter />
+          <InputCounter initialQuantity={productData.quantity} />
         </div>
         <div className={styles.minicart_card__price}>
           {formatCurrency(parseFloat(productData.price)).slice(0, -3)}
@@ -34,7 +38,7 @@ const MiniCartCard = ({ productData }: IMiniCartCard) => {
       </div>
       <button
         className={styles.minicart_card__close}
-        // onClick={handleCloseCart}
+        onClick={() => handleDeleteCartItem(productData.id)}
       >
         <IoCloseCircle />
       </button>
