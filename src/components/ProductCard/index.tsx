@@ -25,7 +25,7 @@ const ProductCard = ({ productData }: IProductCard) => {
           </div>
         </div>
         <div className={styles.product_card__main_infos}>
-          <p>{productData.name}</p>
+          <p className={styles.product_card__name}>{productData.name}</p>
           <span>
             <ProductPrice price={productData.price} />
           </span>
