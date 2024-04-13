@@ -1,8 +1,4 @@
-// import { montserrat } from '@/app/layout'
 import styles from './styles.module.scss'
-import { Montserrat } from 'next/font/google'
-
-export const montserrat = Montserrat({ subsets: ['latin'] })
 
 interface IButton {
   type?: 'primary' | 'secondary'

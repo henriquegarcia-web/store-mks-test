@@ -1,3 +1,13 @@
+@import '@/utils/styles/variables.module.scss';
+
 .product_price {
   display: flex;
+  padding: 6px 10px;
+  border-radius: $border-radius;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: $color-tag;
+  color: $color-white;
 }

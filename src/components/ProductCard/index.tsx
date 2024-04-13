@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
-import { Button } from '@/components'
+import { Button, ProductPrice } from '@/components'
 
 import { IProduct } from '@/@types/store'
 
@@ -26,7 +26,9 @@ const ProductCard = ({ productData }: IProductCard) => {
         </div>
         <div className={styles.product_card__main_infos}>
           <p>{productData.name}</p>
-          <span></span>
+          <span>
+            <ProductPrice price={productData.price} />
+          </span>
         </div>
         <p className={styles.product_card__description}>
           {productData.description}
