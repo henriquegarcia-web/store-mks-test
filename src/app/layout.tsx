@@ -5,7 +5,7 @@ import '@/utils/styles/globals.scss'
 
 import Providers from './providers'
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+export const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Loja de Roupas | Teste MKS',

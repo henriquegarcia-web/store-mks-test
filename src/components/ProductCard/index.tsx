@@ -33,7 +33,17 @@ const ProductCard = ({ productData }: IProductCard) => {
         </p>
       </div>
       <div className={styles.product_card__cta}>
-        <Button />
+        <Button
+          label="Comprar"
+          icon={
+            <Image
+              src="/shopping-bag.svg"
+              alt="Ícone do Botão de Compra"
+              width={16}
+              height={16}
+            />
+          }
+        />
       </div>
     </div>
   )

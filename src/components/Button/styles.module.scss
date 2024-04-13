@@ -1,3 +1,36 @@
+@import '@/utils/styles/variables.module.scss';
+
 .button {
   display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  cursor: pointer;
+  transition: $transition;
+
+  &.type_primary {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    background-color: $color-main;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-main-hover;
+    }
+  }
+
+  &.type_secondary {
+    font-size: 18px;
+    font-weight: 800;
+
+    background-color: $color-black;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-black-hover;
+    }
+  }
 }
