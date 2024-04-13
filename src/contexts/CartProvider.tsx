@@ -19,7 +19,7 @@ export const CartContext = createContext<ICartContextData>(
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
   // ========================================================================
 
-  const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
+  const [isOpenCart, setIsOpenCart] = useState<boolean>(true)
   const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
   const handleToggleCart = () => setIsOpenCart(!isOpenCart)

@@ -50,10 +50,30 @@
 
   .minicart_menu__content {
     display: flex;
-    flex: 1;
-    padding: $main-padding;
+    height: calc(100% - 260px);
+    padding: 10px $main-padding;
 
-    border: 2px solid red;
+    .minicart_menu__content_wrapper {
+      display: flex;
+      width: 100%;
+      padding: 10px 10px 10px 0;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .minicart_menu__content_products {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        row-gap: 10px;
+      }
+    }
   }
 
   .minicart_menu__footer {
@@ -65,7 +85,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px $main-padding;
+      height: 50px;
+      padding: 0 $main-padding;
 
       .minicart_menu__subtotalLabel {
         font-size: 22px;

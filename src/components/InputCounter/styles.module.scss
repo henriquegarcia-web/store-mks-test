@@ -1,3 +1,46 @@
+@import '@/utils/styles/variables.module.scss';
+
 .input_counter {
   display: flex;
+  width: fit-content;
+  height: fit-content;
+  border-radius: $border-radius;
+  padding: 5px 0;
+
+  border: 1px solid $color-gray;
+
+  .input_counter__decrease,
+  .input_counter__increase {
+    display: flex;
+    width: 30px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: $transition;
+
+    svg {
+      font-size: 14px;
+    }
+
+    background-color: transparent;
+  }
+
+  // .input_counter__decrease {
+  // }
+
+  // .input_counter__increase {
+  // }
+
+  .input_counter__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+
+    font-size: 14px;
+
+    border-left: 1px solid $color-gray;
+    border-right: 1px solid $color-gray;
+  }
 }

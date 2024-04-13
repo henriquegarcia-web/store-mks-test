@@ -1,3 +1,5 @@
+@import '@/utils/styles/variables.module.scss';
+
 html,
 body {
   max-width: 100vw;
@@ -5,7 +7,7 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: $color-white;
   scroll-behavior: smooth;
 }
 
@@ -49,6 +51,6 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: gray;
+  background: $color-black;
   border-radius: 10px;
 }
