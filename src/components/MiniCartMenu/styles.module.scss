@@ -119,6 +119,13 @@
         font-weight: 700;
 
         color: $color-white;
+
+        .skeleton_subtotalValue {
+          display: flex;
+          width: 110px;
+          height: 30px;
+          border-radius: $border-radius-loading;
+        }
       }
     }
 

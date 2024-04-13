@@ -4,38 +4,34 @@ import { FiLoader } from 'react-icons/fi'
 
 interface IInputCounter {
   initialQuantity: number
-  addingProductToCart: boolean
+  updatingCart: boolean
   handleDecreaseQuantity: () => void
   handleIncreaseQuantity: () => void
 }
 
 const InputCounter = ({
   initialQuantity,
-  addingProductToCart,
+  updatingCart,
   handleDecreaseQuantity,
   handleIncreaseQuantity
 }: IInputCounter) => {
   return (
     <div
-      className={`${styles.input_counter} ${addingProductToCart && styles.input_disabled}`}
+      className={`${styles.input_counter} ${updatingCart && styles.input_disabled}`}
     >
       <button
         className={styles.input_counter__decrease}
-        disabled={addingProductToCart}
+        disabled={updatingCart}
         onClick={() => handleDecreaseQuantity()}
       >
         {initialQuantity === 1 ? <IoTrashOutline /> : <IoRemove />}
       </button>
       <span className={styles.input_counter__count}>
-        {addingProductToCart ? (
-          <FiLoader className="icon_Loading" />
-        ) : (
-          initialQuantity
-        )}
+        {updatingCart ? <FiLoader className="icon_Loading" /> : initialQuantity}
       </span>
       <button
         className={styles.input_counter__increase}
-        disabled={addingProductToCart}
+        disabled={updatingCart}
         onClick={() => handleIncreaseQuantity()}
       >
         <IoAdd />

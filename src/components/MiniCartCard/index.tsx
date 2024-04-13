@@ -1,43 +1,31 @@
 'use client'
 
-import { useCallback, useState } from 'react'
 import Image from 'next/image'
 
 import styles from './styles.module.scss'
 import { IoCloseCircle } from 'react-icons/io5'
 
 import { InputCounter } from '@/components'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-import { useCart } from '@/contexts/CartProvider'
 import { formatCurrency } from '@/utils/functions/formatCurrency'
 
-import { ICartProduct } from '@/@types/store'
+import { ICartProduct, IProduct } from '@/@types/store'
 interface IMiniCartCard {
+  updatingCart: boolean
   productData: ICartProduct
+  handleDecreaseQuantity: () => void
+  handleIncreaseQuantity: () => void
+  handleDeleteCartItem: (product: IProduct) => void
 }
 
-const MiniCartCard = ({ productData }: IMiniCartCard) => {
-  const { handleDeleteCartItem, updateCartProductQuantity } = useCart()
-
-  const [addingProductToCart, setUpdatingProductQuantity] = useState(false)
-
-  const handleIncreaseProductQuantity = useCallback(() => {
-    setUpdatingProductQuantity(true)
-    setTimeout(() => {
-      updateCartProductQuantity(productData, 1)
-      setUpdatingProductQuantity(false)
-    }, 1000)
-  }, [productData])
-
-  const handleDecreaseProductQuantity = useCallback(() => {
-    setUpdatingProductQuantity(true)
-    setTimeout(() => {
-      updateCartProductQuantity(productData, -1)
-      setUpdatingProductQuantity(false)
-    }, 1000)
-  }, [productData])
-
+const MiniCartCard = ({
+  updatingCart,
+  productData,
+  handleDecreaseQuantity,
+  handleIncreaseQuantity,
+  handleDeleteCartItem
+}: IMiniCartCard) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -58,9 +46,9 @@ const MiniCartCard = ({ productData }: IMiniCartCard) => {
           <div className={styles.minicart_card__counter}>
             <InputCounter
               initialQuantity={productData.quantity}
-              addingProductToCart={addingProductToCart}
-              handleDecreaseQuantity={handleDecreaseProductQuantity}
-              handleIncreaseQuantity={handleIncreaseProductQuantity}
+              updatingCart={updatingCart}
+              handleDecreaseQuantity={handleDecreaseQuantity}
+              handleIncreaseQuantity={handleIncreaseQuantity}
             />
           </div>
           <div className={styles.minicart_card__price}>

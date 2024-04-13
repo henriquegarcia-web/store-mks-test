@@ -1,11 +1,17 @@
+'use client'
+
+import { useState } from 'react'
+
 import styles from './styles.module.scss'
 import { IoCloseCircle } from 'react-icons/io5'
 import { TbShoppingCartQuestion } from 'react-icons/tb'
 
 import { Button, MiniCartCard } from '@/components'
 
-import { ICartDetails, ICartProduct } from '@/@types/store'
+import { ICartDetails, ICartProduct, IProduct } from '@/@types/store'
 import { formatCurrency } from '@/utils/functions/formatCurrency'
+
+import { useCart } from '@/contexts/CartProvider'
 
 interface IMiniCartMenu {
   handleCloseCart: () => void
@@ -13,6 +19,26 @@ interface IMiniCartMenu {
 }
 
 const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
+  const { handleDeleteCartItem, updateCartProductQuantity } = useCart()
+
+  const [updatingCart, setUpdatingCard] = useState(false)
+
+  const handleIncreaseProductQuantity = (product: IProduct) => {
+    setUpdatingCard(true)
+    setTimeout(() => {
+      updateCartProductQuantity(product, 1)
+      setUpdatingCard(false)
+    }, 1000)
+  }
+
+  const handleDecreaseProductQuantity = (product: IProduct) => {
+    setUpdatingCard(true)
+    setTimeout(() => {
+      updateCartProductQuantity(product, -1)
+      setUpdatingCard(false)
+    }, 1000)
+  }
+
   return (
     <div className={styles.minicart_menu}>
       <div className={styles.minicart_menu__header}>
@@ -34,7 +60,18 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
               </div>
             ) : (
               cartDetails.cartProducts.map((product: ICartProduct) => (
-                <MiniCartCard key={product.id} productData={product} />
+                <MiniCartCard
+                  key={product.id}
+                  updatingCart={updatingCart}
+                  productData={product}
+                  handleDecreaseQuantity={() =>
+                    handleDecreaseProductQuantity(product)
+                  }
+                  handleIncreaseQuantity={() =>
+                    handleIncreaseProductQuantity(product)
+                  }
+                  handleDeleteCartItem={handleDeleteCartItem}
+                />
               ))
             )}
           </div>
@@ -44,7 +81,11 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
         <div className={styles.minicart_menu__subtotal}>
           <p className={styles.minicart_menu__subtotalLabel}>Total:</p>
           <b className={styles.minicart_menu__subtotalValue}>
-            {formatCurrency(cartDetails.cartTotalPrice).slice(0, -3)}
+            {updatingCart ? (
+              <span className={`${styles.skeleton_subtotalValue} skeleton`} />
+            ) : (
+              formatCurrency(cartDetails.cartTotalPrice).slice(0, -3)
+            )}
           </b>
         </div>
         <div className={styles.minicart_menu__cta}>
