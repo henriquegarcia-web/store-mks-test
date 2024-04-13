@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { StoreProvider } from '@/contexts/StoreProvider'
+import { CartProvider } from '@/contexts/CartProvider'
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -21,11 +21,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   )
 
   return (
-    <StoreProvider>
+    <CartProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
         {children}
       </QueryClientProvider>
-    </StoreProvider>
+    </CartProvider>
   )
 }
