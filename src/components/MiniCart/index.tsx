@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.scss'
 
+import { MiniCartMenu } from '@/components'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import useClickOutside from '@/hooks/useClickOutside'
@@ -41,12 +42,13 @@ const MiniCart = () => {
       <AnimatePresence>
         {isOpenCart && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
+            initial={{ opacity: 1, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            className={styles.minicart__menu}
+            exit={{ opacity: 1, x: '100%' }}
+            transition={{ ease: 'easeOut', duration: 0.3 }}
+            className={styles.minicart__animation}
           >
-            <div></div>
+            <MiniCartMenu handleCloseCart={handleCloseCart} />
           </motion.div>
         )}
       </AnimatePresence>

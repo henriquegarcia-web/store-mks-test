@@ -32,14 +32,15 @@
   }
 }
 
-.minicart__menu {
+.minicart__animation {
   z-index: 100;
   position: fixed;
   top: 0;
   right: 0;
-  display: flex;
+  width: 100%;
+  max-width: 480px;
   height: 100vh;
-  padding: 40px;
 
-  background-color: black;
+  box-shadow: 0 0 12px $color-shadow-hover;
+  background-color: $color-main;
 }

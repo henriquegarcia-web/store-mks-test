@@ -5,7 +5,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px $horizontal-padding;
+  height: $header-height;
+  padding: 0 $main-padding;
 
   background-color: $color-main;
 }

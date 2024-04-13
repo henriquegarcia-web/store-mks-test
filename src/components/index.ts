@@ -9,6 +9,7 @@ import Button from './Button'
 import InputCounter from './InputCounter'
 
 import MiniCart from './MiniCart'
+import MiniCartMenu from './MiniCartMenu'
 import MiniCartCard from './MiniCartCard'
 
 import ProductList from './ProductList'
@@ -24,6 +25,7 @@ export {
   Button,
   InputCounter,
   MiniCart,
+  MiniCartMenu,
   MiniCartCard,
   ProductList,
   ProductCard,
