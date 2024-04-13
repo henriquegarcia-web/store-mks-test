@@ -1,3 +1,24 @@
+@import '@/utils/styles/variables.module.scss';
+
 .minicart {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  padding: 10px 15px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $transition;
+
+  p {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  background-color: $color-white;
+  color: $color-black;
+
+  &:hover {
+    background-color: $color-white-hover;
+  }
 }
