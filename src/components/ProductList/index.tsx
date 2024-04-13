@@ -2,7 +2,7 @@
 
 import styles from './styles.module.scss'
 
-import { ProductCard } from '@/components'
+import { ProductCard, ProductListSkeleton } from '@/components'
 
 import { useGetProducts } from '@/hooks/useGetProducts'
 
@@ -19,9 +19,13 @@ const ProductList = () => {
   return (
     <div className={styles.product_list}>
       <div className={styles.product_list__wrapper}>
-        {posts?.map((product: IProduct) => (
-          <ProductCard key={product.id} productData={product} />
-        ))}
+        {isLoading ? (
+          <ProductListSkeleton />
+        ) : (
+          posts?.map((product: IProduct) => (
+            <ProductCard key={product.id} productData={product} />
+          ))
+        )}
       </div>
     </div>
   )

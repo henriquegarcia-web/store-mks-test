@@ -17,6 +17,9 @@ import ProductCard from './ProductCard'
 import ProductPrice from './ProductPrice'
 import AddProductToCart from './AddProductToCart'
 
+import ProductCardSkeleton from './@skeletons/ProductCardSkeleton'
+import ProductListSkeleton from './@skeletons/ProductListSkeleton'
+
 // ===================================== EXPORTS
 
 export {
@@ -31,5 +34,7 @@ export {
   ProductList,
   ProductCard,
   ProductPrice,
-  AddProductToCart
+  AddProductToCart,
+  ProductListSkeleton,
+  ProductCardSkeleton
 }

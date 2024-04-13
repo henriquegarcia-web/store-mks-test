@@ -9,12 +9,7 @@ import { IProduct } from '@/@types/store'
 export const action = createSafeActionClient()
 
 const fetchProducts = async (): Promise<IProduct[] | null> => {
-  const delay = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms))
-
   try {
-    await delay(5000)
-
     const response = await api.get('/products', {
       params: {
         page: 1,
@@ -23,7 +18,6 @@ const fetchProducts = async (): Promise<IProduct[] | null> => {
         orderBy: 'ASC'
       }
     })
-
     const data = await response.data
     return data.products || null
   } catch (error) {
