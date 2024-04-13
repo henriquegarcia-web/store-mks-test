@@ -6,8 +6,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Providers from './providers'
 
-export const montserrat = Montserrat({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   title: 'Loja de Roupas | Teste MKS',
   description: ''
@@ -18,6 +16,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const montserrat = Montserrat({ subsets: ['latin'] })
+
   return (
     <html lang="pt-br">
       <body className={montserrat.className}>
