@@ -31,3 +31,15 @@
     background-color: $color-white-hover;
   }
 }
+
+.minicart__menu {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  height: 100vh;
+  padding: 40px;
+
+  background-color: black;
+}
