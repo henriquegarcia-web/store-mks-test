@@ -1,3 +1,22 @@
+@import '@/utils/styles/variables.module.scss';
+
 .product_list {
   display: flex;
+  justify-content: center;
+  padding: 60px $horizontal-padding;
+}
+
+.product_list__wrapper {
+  display: flex;
+  width: 100%;
+  max-width: $horizontal-wrapper;
+  height: fit-content;
+
+  // display: grid;
+  // grid-template-columns: repeat(1, minmax(0, 1fr));
+  // // gap-x: 1.5rem;
+  // // gap-y: 2.5rem;
+  // gap: 20px;
+
+  // border: 2px solid red;
 }
