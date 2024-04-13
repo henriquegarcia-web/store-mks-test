@@ -1,5 +1,6 @@
 import styles from './styles.module.scss'
 import { IoCloseCircle } from 'react-icons/io5'
+import { TbShoppingCartQuestion } from 'react-icons/tb'
 
 import { Button, MiniCartCard } from '@/components'
 
@@ -26,9 +27,16 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
       <div className={styles.minicart_menu__content}>
         <div className={styles.minicart_menu__content_wrapper}>
           <div className={styles.minicart_menu__content_products}>
-            {cartDetails.cartProducts.map((product: ICartProduct) => (
-              <MiniCartCard key={product.id} productData={product} />
-            ))}
+            {!cartDetails.cartProducts.length ? (
+              <div className={styles.minicart_menu__content_empty}>
+                <TbShoppingCartQuestion />
+                Carrinho vazio. Adicione um produto.
+              </div>
+            ) : (
+              cartDetails.cartProducts.map((product: ICartProduct) => (
+                <MiniCartCard key={product.id} productData={product} />
+              ))
+            )}
           </div>
         </div>
       </div>
