@@ -11,6 +11,7 @@ import React, {
 
 import { ICartContextData } from '@/@types/contexts'
 import { ICartProduct, IProduct } from '@/@types/store'
+import { handleNotify } from '@/utils/functions/notify'
 
 export const CartContext = createContext<ICartContextData>(
   {} as ICartContextData
@@ -47,7 +48,10 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     if (existingIndex !== -1) {
       storedCart[existingIndex].quantity++
 
-      // INFORMATIVO: Item já existe no carrinho. Quantidade aumentada em 1.
+      handleNotify(
+        'Item já existe no carrinho. Quantidade aumentada em 1.',
+        'info'
+      )
     } else {
       const newProduct: ICartProduct = {
         ...product,
@@ -55,7 +59,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       }
       storedCart.push(newProduct)
 
-      // SUCESSO: Produto adicionado ao carrinho.
+      handleNotify('Produto adicionado ao carrinho.', 'success')
     }
 
     localStorage.setItem('mksCartItems', JSON.stringify(storedCart))

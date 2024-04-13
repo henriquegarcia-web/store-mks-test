@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
+import { ToastContainer } from 'react-toastify'
+
 import { CartProvider } from '@/contexts/CartProvider'
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -24,6 +26,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <CartProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
+        <ToastContainer />
         {children}
       </QueryClientProvider>
     </CartProvider>
