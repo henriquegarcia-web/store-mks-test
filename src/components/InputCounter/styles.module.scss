@@ -1,57 +1,74 @@
 @import '@/utils/styles/variables.module.scss';
 
-.input_counter {
+.input_counter__wrapper {
   display: flex;
-  width: fit-content;
-  height: fit-content;
-  border-radius: $border-radius;
-  padding: 5px 0;
-  transition: $transition;
+  flex-direction: column;
+  row-gap: 3px;
 
-  border: 1px solid $color-gray;
-
-  &.input_disabled {
-    cursor: default;
-    pointer-events: none;
-    background-color: $color-disabled;
+  .input_counter__label {
+    font-size: 10px;
+    font-weight: 400;
   }
 
-  .input_counter__decrease,
-  .input_counter__increase {
+  .input_counter {
     display: flex;
-    width: 30px;
-    height: 24px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    border-radius: $border-radius;
+    padding: 5px 0;
     transition: $transition;
 
-    svg {
-      font-size: 14px;
+    border: 1px solid $color-gray;
+
+    &.input_disabled {
+      cursor: default;
+      pointer-events: none;
+      background-color: $color-disabled;
     }
 
-    background-color: transparent;
+    .input_counter__decrease,
+    .input_counter__increase {
+      display: flex;
+      width: 26px;
+      height: 20px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: $transition;
 
-    &:disabled {
-      pointer-events: none;
+      svg {
+        font-size: 12px;
+      }
+
+      background-color: transparent;
+
+      &:disabled {
+        pointer-events: none;
+      }
+    }
+
+    // .input_counter__decrease {
+    // }
+
+    // .input_counter__increase {
+    // }
+
+    .input_counter__count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 26px;
+
+      font-size: 12px;
+
+      border-left: 1px solid $color-gray;
+      border-right: 1px solid $color-gray;
     }
   }
 
-  // .input_counter__decrease {
-  // }
-
-  // .input_counter__increase {
-  // }
-
-  .input_counter__count {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-
-    font-size: 14px;
-
-    border-left: 1px solid $color-gray;
-    border-right: 1px solid $color-gray;
+  @media screen and (max-width: $responsive-mobile) {
+    .input_counter__label {
+      display: none;
+    }
   }
 }

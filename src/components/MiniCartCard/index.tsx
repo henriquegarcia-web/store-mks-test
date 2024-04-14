@@ -43,18 +43,20 @@ const MiniCartCard = ({
         </div>
         <div className={styles.minicart_card__details}>
           <div className={styles.minicart_card__name}>{productData.name}</div>
-          <div className={styles.minicart_card__counter}>
-            <InputCounter
-              initialQuantity={productData.quantity}
-              updatingCart={updatingCart}
-              handleDecreaseQuantity={handleDecreaseQuantity}
-              handleIncreaseQuantity={handleIncreaseQuantity}
-            />
-          </div>
-          <div className={styles.minicart_card__price}>
-            {formatCurrency(
-              productData.quantity * parseFloat(productData.price)
-            ).slice(0, -3)}
+          <div className={styles.minicart_card__details_wrapper}>
+            <div className={styles.minicart_card__counter}>
+              <InputCounter
+                initialQuantity={productData.quantity}
+                updatingCart={updatingCart}
+                handleDecreaseQuantity={handleDecreaseQuantity}
+                handleIncreaseQuantity={handleIncreaseQuantity}
+              />
+            </div>
+            <div className={styles.minicart_card__price}>
+              {formatCurrency(
+                productData.quantity * parseFloat(productData.price)
+              ).slice(0, -3)}
+            </div>
           </div>
         </div>
         <button

@@ -38,6 +38,6 @@
   &:disabled {
     cursor: default;
     pointer-events: none;
-    background-color: $color-disabled;
+    background-color: $color-button-disabled;
   }
 }

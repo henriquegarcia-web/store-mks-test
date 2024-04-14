@@ -25,6 +25,8 @@
 
   .minicart_card__details {
     display: flex;
+    align-items: center;
+
     flex: 1;
     column-gap: 15px;
 
@@ -32,7 +34,7 @@
       display: flex;
       flex: 1;
 
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
 
       overflow: hidden;
@@ -44,13 +46,21 @@
       -webkit-box-orient: vertical;
     }
 
-    .minicart_card__counter {
+    .minicart_card__details_wrapper {
       display: flex;
-    }
+      align-items: center;
 
-    .minicart_card__price {
-      font-size: 16px;
-      font-weight: 700;
+      .minicart_card__counter {
+        display: flex;
+        margin-left: auto;
+      }
+
+      .minicart_card__price {
+        width: 90px;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: right;
+      }
     }
   }
 
@@ -72,5 +82,48 @@
 
     background-color: white;
     border-radius: 100%;
+  }
+
+  @media screen and (max-width: $responsive-mobile) {
+    flex-direction: column;
+    row-gap: 14px;
+    padding: 25px;
+
+    .minicart_card__image {
+      width: 100%;
+      height: 140px;
+    }
+
+    .minicart_card__details {
+      flex-direction: column;
+      row-gap: 8px;
+
+      .minicart_card__name {
+        font-size: 16px;
+      }
+
+      .minicart_card__details_wrapper {
+        justify-content: space-between;
+        width: 100%;
+
+        .minicart_card__counter {
+          margin-left: 0;
+        }
+
+        .minicart_card__price {
+          width: fit-content;
+          height: fit-content;
+          padding: 8px 12px;
+          border-radius: $border-radius;
+
+          font-size: 13px;
+          font-weight: 600;
+          text-align: center;
+
+          background-color: $color-tag;
+          color: $color-white;
+        }
+      }
+    }
   }
 }
