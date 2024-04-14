@@ -52,7 +52,9 @@ const MiniCartCard = ({
             />
           </div>
           <div className={styles.minicart_card__price}>
-            {formatCurrency(parseFloat(productData.price)).slice(0, -3)}
+            {formatCurrency(
+              productData.quantity * parseFloat(productData.price)
+            ).slice(0, -3)}
           </div>
         </div>
         <button
