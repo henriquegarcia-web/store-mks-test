@@ -1,8 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+
 import InputCounter from './'
 
-describe('InputCounter component', () => {
-  test('renders initial quantity and buttons', () => {
+// ===========================================================================
+
+describe('<InputCounter>', () => {
+  // Teste: Renderiza quantidade inicial e botões
+  test('Renders initial quantity and buttons', () => {
     const initialQuantity = 3
     const updatingCart = false
     const handleDecreaseQuantity = jest.fn()
@@ -29,7 +33,8 @@ describe('InputCounter component', () => {
     expect(increaseButton).toBeInTheDocument()
   })
 
-  test('disables buttons and shows loading icon when updating cart', () => {
+  // Teste: Desativa botões e mostra ícone de carregamento ao atualizar carrinho
+  test('Disables buttons and shows loading icon when updating cart', () => {
     const initialQuantity = 3
     const updatingCart = true
     const handleDecreaseQuantity = jest.fn()
@@ -56,7 +61,8 @@ describe('InputCounter component', () => {
     expect(loadingIcon).toBeInTheDocument()
   })
 
-  test('calls decrease and increase quantity functions when buttons are clicked', () => {
+  // Teste: As chamadas diminuem e aumentam as funções de quantidade quando os botões são clicados
+  test('Calls decrease and increase quantity functions when buttons are clicked', () => {
     const initialQuantity = 3
     const updatingCart = false
     const handleDecreaseQuantity = jest.fn()

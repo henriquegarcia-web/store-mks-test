@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react'
+
 import Logo from './'
 
-describe('Logo component', () => {
-  test('renders link with logo text', () => {
+// ===========================================================================
+
+describe('<Logo>', () => {
+  // Teste: Renderiza link com texto do logotipo
+  test('Renders link with logo text', () => {
     render(<Logo />)
 
     // Verifica se o link está presente e se possui o texto 'MKS Sistemas'
@@ -19,7 +23,8 @@ describe('Logo component', () => {
     expect(paragraphTextElement).toBeInTheDocument()
   })
 
-  test('link points to the correct destination', () => {
+  // Teste: O link aponta para o destino correto
+  test('Link points to the correct destination', () => {
     render(<Logo />)
 
     // Verifica se o link possui o href correto

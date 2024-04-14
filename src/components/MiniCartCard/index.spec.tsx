@@ -1,7 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+
 import MiniCartCard from './'
 
 import { productData } from '@/@mocks/tests'
+
+// ===========================================================================
 
 describe('MiniCartCard component', () => {
   const updatingCart = false
@@ -9,7 +12,8 @@ describe('MiniCartCard component', () => {
   const handleIncreaseQuantity = jest.fn()
   const handleDeleteCartItem = jest.fn()
 
-  test('renders product details and buttons', () => {
+  // Teste: Renderiza detalhes e botões do produto
+  test('Renders product details and buttons', () => {
     render(
       <MiniCartCard
         productData={productData}
@@ -39,7 +43,8 @@ describe('MiniCartCard component', () => {
     expect(closeButton).toBeInTheDocument()
   })
 
-  test('calls deleteCartItem function when close button is clicked', () => {
+  // Teste: Chama a função deleteCartItem quando o botão Fechar é clicado
+  test('Calls deleteCartItem function when close button is clicked', () => {
     render(
       <MiniCartCard
         productData={productData}

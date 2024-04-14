@@ -5,8 +5,11 @@ import MiniCartMenu from './'
 import { CartProvider } from '@/contexts/CartProvider'
 import { cartDetails } from '@/@mocks/tests'
 
+// ===========================================================================
+
 describe('MiniCartMenu component', () => {
-  it('renders cart details and buttons', () => {
+  // Teste: Renderiza detalhes e botões do carrinho
+  test('Renders cart details and buttons', () => {
     render(
       <CartProvider>
         <MiniCartMenu handleCloseCart={() => {}} cartDetails={cartDetails} />
@@ -28,7 +31,8 @@ describe('MiniCartMenu component', () => {
     ).toBeGreaterThan(0)
   })
 
-  it('updates cart total when product quantity is changed', async () => {
+  // Teste: Atualiza o total do carrinho quando a quantidade do produto é alterada
+  test('Updates cart total when product quantity is changed', async () => {
     render(
       <CartProvider>
         <MiniCartMenu handleCloseCart={() => {}} cartDetails={cartDetails} />

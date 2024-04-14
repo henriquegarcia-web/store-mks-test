@@ -2,8 +2,11 @@ import { render, screen } from '@testing-library/react'
 
 import Footer from './'
 
-describe('Footer component', () => {
-  test('renders footer text and link', () => {
+// ===========================================================================
+
+describe('<Footer>', () => {
+  // Teste: Renderiza texto e link do rodapé
+  test('Renders footer text and link', () => {
     render(<Footer />)
 
     // Verifica se o texto do link está presente e se é o esperado

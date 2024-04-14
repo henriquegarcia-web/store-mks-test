@@ -1,9 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+
 import MiniCart from './'
+
 import { CartProvider } from '@/contexts/CartProvider'
 
-describe('MiniCart component', () => {
-  test('renders mini cart button', () => {
+// ===========================================================================
+
+describe('<MiniCart>', () => {
+  // Teste: Renderiza o botão do mini carrinho
+  test('Renders mini cart button', () => {
     render(
       <CartProvider>
         <MiniCart />
@@ -16,10 +21,12 @@ describe('MiniCart component', () => {
 
     // Verifica se o texto de contagem do carrinho está presente
     const cartCount = screen.queryByText(/\d+/)
-    expect(cartCount).toBeNull() // Não deve estar presente inicialmente
+    // Não deve estar presente inicialmente
+    expect(cartCount).toBeNull()
   })
 
-  test('opens mini cart on button click', () => {
+  // Teste: Abre o mini carrinho ao clicar no botão
+  test('Opens mini cart on button click', () => {
     render(
       <CartProvider>
         <MiniCart />
@@ -35,7 +42,8 @@ describe('MiniCart component', () => {
     expect(miniCartMenu).toBeInTheDocument()
   })
 
-  test('closes mini cart on outside click', () => {
+  // Teste: Fecha o mini carrinho com clique externo
+  test('Closes mini cart on outside click', () => {
     render(
       <CartProvider>
         <MiniCart />
