@@ -1,12 +1,8 @@
 'use server'
 
-import { createSafeActionClient } from 'next-safe-action'
-
 import { api } from '@/server'
 
 import { IProduct } from '@/@types/store'
-
-export const action = createSafeActionClient()
 
 const fetchProducts = async (): Promise<IProduct[] | null> => {
   try {

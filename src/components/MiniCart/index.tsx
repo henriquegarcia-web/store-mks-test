@@ -25,7 +25,11 @@ const MiniCart = () => {
 
   return (
     <div className={styles.minicart} ref={miniCartMenuRef}>
-      <div className={styles.minicart__button} onClick={handleToggleCart}>
+      <div
+        className={styles.minicart__button}
+        onClick={handleToggleCart}
+        data-testid="cart-button"
+      >
         <Image
           src="/minicart.svg"
           alt="Ícone do Carrinho"
@@ -44,6 +48,7 @@ const MiniCart = () => {
             exit={{ opacity: 1, x: '100%' }}
             transition={{ ease: 'easeOut', duration: 0.3 }}
             className={styles.minicart__animation}
+            data-testid="cart-dialog"
           >
             <MiniCartMenu
               handleCloseCart={handleCloseCart}

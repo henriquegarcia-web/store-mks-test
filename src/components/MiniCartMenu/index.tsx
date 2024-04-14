@@ -46,6 +46,7 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
         <button
           className={styles.minicart_menu__close}
           onClick={handleCloseCart}
+          data-testid="mini-cart-close"
         >
           <IoCloseCircle />
         </button>
@@ -89,7 +90,11 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
           </b>
         </div>
         <div className={styles.minicart_menu__cta}>
-          <Button label="Finalizar Compra" type="secondary" />
+          <Button
+            label="Finalizar Compra"
+            type="secondary"
+            data-testid="mini-cart-buy-button"
+          />
         </div>
       </div>
     </div>

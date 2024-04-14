@@ -18,21 +18,28 @@ const InputCounter = ({
   return (
     <div
       className={`${styles.input_counter} ${updatingCart && styles.input_disabled}`}
+      data-testid="input-counter"
     >
       <button
         className={styles.input_counter__decrease}
         disabled={updatingCart}
         onClick={() => handleDecreaseQuantity()}
+        data-testid="decrease-button"
       >
         {initialQuantity === 1 ? <IoTrashOutline /> : <IoRemove />}
       </button>
       <span className={styles.input_counter__count}>
-        {updatingCart ? <FiLoader className="icon_Loading" /> : initialQuantity}
+        {updatingCart ? (
+          <FiLoader className="icon_Loading" data-testid="loading-icon" />
+        ) : (
+          initialQuantity
+        )}
       </span>
       <button
         className={styles.input_counter__increase}
         disabled={updatingCart}
         onClick={() => handleIncreaseQuantity()}
+        data-testid="increase-button"
       >
         <IoAdd />
       </button>

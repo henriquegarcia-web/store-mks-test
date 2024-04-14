@@ -58,6 +58,7 @@ const MiniCartCard = ({
         <button
           className={styles.minicart_card__close}
           onClick={() => handleDeleteCartItem(productData)}
+          data-testid="mini-cart-cart-close"
         >
           <IoCloseCircle />
         </button>
