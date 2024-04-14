@@ -51,7 +51,11 @@ Esta é uma aplicação web desenvolvida como parte do desafio técnico para a e
 
 6. Abra seu navegador da web:
 
-   > Visite `http://localhost:3000` para visualizar a aplicação.
+   > Acesse `http://localhost:3000` para visualizar a aplicação.
+
+7. Para rodar os testes:
+
+   > Dentro da raiz: `npm run test` ou `yarn test`
 
 ## Agradecimentos
 
