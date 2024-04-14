@@ -5,6 +5,7 @@ import { ICartDetails, ICartProduct, IProduct } from './store'
 export interface ICartContextData {
   isOpenCart: boolean
   cartDetails: ICartDetails
+  updatingCart: boolean
   handleToggleCart: () => void
   handleOpenCart: () => void
   handleCloseCart: () => void

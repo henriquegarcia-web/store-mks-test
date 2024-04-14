@@ -22,6 +22,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
   const [cartProducts, setCartProducts] = useState<ICartProduct[]>([])
+  const [updatingCart, setUpdatingCard] = useState(false)
 
   const handleToggleCart = () => setIsOpenCart(!isOpenCart)
   const handleOpenCart = () => setIsOpenCart(true)
@@ -93,42 +94,53 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
   )
 
   const handleFinalizePurchases = () => {
-    setCartProducts([])
-    localStorage.removeItem('mksCartItems')
+    setUpdatingCard(true)
+    setTimeout(() => {
+      setCartProducts([])
+      localStorage.removeItem('mksCartItems')
 
-    handleNotify(
-      'Compra finalizada com sucesso! O carrinho foi esvaziado.',
-      'success'
-    )
+      handleNotify(
+        'Compra finalizada com sucesso! O carrinho foi esvaziado.',
+        'success'
+      )
+
+      setUpdatingCard(false)
+    }, 1000)
   }
 
   const updateCartProductQuantity = useCallback(
     (product: IProduct, quantityModifier: number) => {
-      const updatedCartProducts = cartProducts
-        .map((item: ICartProduct) => {
-          if (item.id === product.id) {
-            const newQuantity = Math.max(item.quantity + quantityModifier, 0)
-            if (newQuantity === 0) {
-              const noitfyMessage = `${product.name} removido do carrinho.`
-              handleNotify(noitfyMessage, 'warning')
+      setUpdatingCard(true)
 
-              return null
-            } else {
-              return {
-                ...item,
-                quantity: newQuantity
+      setTimeout(() => {
+        const updatedCartProducts = cartProducts
+          .map((item: ICartProduct) => {
+            if (item.id === product.id) {
+              const newQuantity = Math.max(item.quantity + quantityModifier, 0)
+              if (newQuantity === 0) {
+                const noitfyMessage = `${product.name} removido do carrinho.`
+                handleNotify(noitfyMessage, 'warning')
+
+                return null
+              } else {
+                return {
+                  ...item,
+                  quantity: newQuantity
+                }
               }
             }
-          }
-          return item
-        })
-        .filter((item): item is ICartProduct => item !== null)
+            return item
+          })
+          .filter((item): item is ICartProduct => item !== null)
 
-      setCartProducts(updatedCartProducts)
-      localStorage.setItem(
-        'mksCartItems',
-        JSON.stringify(updatedCartProducts.filter(Boolean))
-      )
+        setCartProducts(updatedCartProducts)
+        localStorage.setItem(
+          'mksCartItems',
+          JSON.stringify(updatedCartProducts.filter(Boolean))
+        )
+
+        setUpdatingCard(false)
+      }, 1000)
     },
     [cartProducts]
   )
@@ -157,6 +169,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     return {
       isOpenCart,
       cartDetails,
+      updatingCart,
       handleToggleCart,
       handleOpenCart,
       handleCloseCart,
@@ -165,7 +178,13 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
       updateCartProductQuantity,
       handleFinalizePurchases
     }
-  }, [isOpenCart, cartDetails, handleDeleteCartItem, updateCartProductQuantity])
+  }, [
+    isOpenCart,
+    cartDetails,
+    updatingCart,
+    handleDeleteCartItem,
+    updateCartProductQuantity
+  ])
 
   return (
     <CartContext.Provider value={CartContextData}>

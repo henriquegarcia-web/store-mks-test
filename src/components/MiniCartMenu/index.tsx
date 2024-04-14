@@ -21,38 +21,13 @@ interface IMiniCartMenu {
 
 const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
   const {
+    updatingCart,
     handleDeleteCartItem,
     updateCartProductQuantity,
     handleFinalizePurchases
   } = useCart()
 
   const miniCartWrapperRef = useRef(null)
-
-  const [updatingCart, setUpdatingCard] = useState(false)
-
-  const handleIncreaseProductQuantity = (product: IProduct) => {
-    setUpdatingCard(true)
-    setTimeout(() => {
-      updateCartProductQuantity(product, 1)
-      setUpdatingCard(false)
-    }, 1000)
-  }
-
-  const handleDecreaseProductQuantity = (product: IProduct) => {
-    setUpdatingCard(true)
-    setTimeout(() => {
-      updateCartProductQuantity(product, -1)
-      setUpdatingCard(false)
-    }, 1000)
-  }
-
-  const handleFinalizeCart = () => {
-    setUpdatingCard(true)
-    setTimeout(() => {
-      handleFinalizePurchases()
-      setUpdatingCard(false)
-    }, 1000)
-  }
 
   const [containerHasScrollbar] = useScrollbar(miniCartWrapperRef)
 
@@ -93,10 +68,10 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
                   updatingCart={updatingCart}
                   productData={product}
                   handleDecreaseQuantity={() =>
-                    handleDecreaseProductQuantity(product)
+                    updateCartProductQuantity(product, -1)
                   }
                   handleIncreaseQuantity={() =>
-                    handleIncreaseProductQuantity(product)
+                    updateCartProductQuantity(product, 1)
                   }
                   handleDeleteCartItem={handleDeleteCartItem}
                 />
@@ -124,7 +99,7 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
             label="Finalizar Compra"
             type="secondary"
             loading={updatingCart}
-            onClick={handleFinalizeCart}
+            onClick={handleFinalizePurchases}
           />
         </div>
       </div>
