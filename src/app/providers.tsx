@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { ToastContainer } from 'react-toastify'
+import { Slide, ToastContainer } from 'react-toastify'
 
 import { CartProvider } from '@/contexts/CartProvider'
 
@@ -26,7 +26,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <CartProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
-        <ToastContainer />
+        <ToastContainer
+          position="bottom-left"
+          pauseOnHover={false}
+          transition={Slide}
+        />
         {children}
       </QueryClientProvider>
     </CartProvider>

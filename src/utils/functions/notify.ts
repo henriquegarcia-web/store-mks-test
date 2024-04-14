@@ -6,29 +6,19 @@ const handleNotify = (
 ) => {
   switch (type) {
     case 'info':
-      toast.info(alert, {
-        transition: Slide
-      })
+      toast.info(alert)
       break
     case 'success':
-      toast.success(alert, {
-        transition: Slide
-      })
+      toast.success(alert)
       break
     case 'warning':
-      toast.warning(alert, {
-        transition: Slide
-      })
+      toast.warning(alert)
       break
     case 'error':
-      toast.error(alert, {
-        transition: Slide
-      })
+      toast.error(alert)
       break
     default:
-      toast(alert, {
-        transition: Slide
-      })
+      toast(alert)
       break
   }
 }

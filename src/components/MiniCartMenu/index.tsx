@@ -19,7 +19,11 @@ interface IMiniCartMenu {
 }
 
 const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
-  const { handleDeleteCartItem, updateCartProductQuantity } = useCart()
+  const {
+    handleDeleteCartItem,
+    updateCartProductQuantity,
+    handleFinalizePurchases
+  } = useCart()
 
   const [updatingCart, setUpdatingCard] = useState(false)
 
@@ -35,6 +39,14 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
     setUpdatingCard(true)
     setTimeout(() => {
       updateCartProductQuantity(product, -1)
+      setUpdatingCard(false)
+    }, 1000)
+  }
+
+  const handleFinalizeCart = () => {
+    setUpdatingCard(true)
+    setTimeout(() => {
+      handleFinalizePurchases()
       setUpdatingCard(false)
     }, 1000)
   }
@@ -93,7 +105,12 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
           className={styles.minicart_menu__cta}
           data-testid="mini-cart-buy-button"
         >
-          <Button label="Finalizar Compra" type="secondary" />
+          <Button
+            label="Finalizar Compra"
+            type="secondary"
+            loading={updatingCart}
+            onClick={handleFinalizeCart}
+          />
         </div>
       </div>
     </div>
