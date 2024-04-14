@@ -34,7 +34,10 @@ const ProductCard = ({ productData }: IProductCard) => {
           {productData.description}
         </p>
       </div>
-      <div className={styles.product_card__cta}>
+      <div
+        className={styles.product_card__cta}
+        data-testid="add-product-to-cart"
+      >
         <AddProductToCart productData={productData} />
       </div>
     </div>

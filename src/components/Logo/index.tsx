@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 const Logo = () => {
   return (
-    <Link href="/" className={styles.logo}>
+    <Link href="/" className={styles.logo} data-testid="logo">
       <b>MKS</b>
       <p>Sistemas</p>
     </Link>

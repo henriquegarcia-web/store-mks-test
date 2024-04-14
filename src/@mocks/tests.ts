@@ -34,3 +34,9 @@ export const cartProducts = [
     quantity: 1
   }
 ]
+
+export const cartDetails = {
+  cartTotalCount: 3,
+  cartTotalPrice: 60,
+  cartProducts: cartProducts
+}

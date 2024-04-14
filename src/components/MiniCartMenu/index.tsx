@@ -89,12 +89,11 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
             )}
           </b>
         </div>
-        <div className={styles.minicart_menu__cta}>
-          <Button
-            label="Finalizar Compra"
-            type="secondary"
-            data-testid="mini-cart-buy-button"
-          />
+        <div
+          className={styles.minicart_menu__cta}
+          data-testid="mini-cart-buy-button"
+        >
+          <Button label="Finalizar Compra" type="secondary" />
         </div>
       </div>
     </div>

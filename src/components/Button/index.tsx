@@ -23,8 +23,14 @@ const Button = ({
       className={`${styles.button} ${styles[`type_${type}`]}`}
       disabled={disabled || loading}
       onClick={onClick && onClick}
+      data-testid="button"
     >
-      {loading && <FiLoader className="icon_Loading" />}
+      {loading && (
+        <FiLoader
+          className="icon_Loading"
+          data-testid="button-loading-spinner"
+        />
+      )}
       {icon && !loading && icon}
 
       {label}

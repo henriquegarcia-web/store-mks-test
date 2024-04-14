@@ -24,7 +24,11 @@ const MiniCart = () => {
   })
 
   return (
-    <div className={styles.minicart} ref={miniCartMenuRef}>
+    <div
+      className={styles.minicart}
+      ref={miniCartMenuRef}
+      data-testid="mini-cart"
+    >
       <div
         className={styles.minicart__button}
         onClick={handleToggleCart}

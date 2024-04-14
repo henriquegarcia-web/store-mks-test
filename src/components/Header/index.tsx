@@ -5,8 +5,8 @@ import { Logo, MiniCart } from '@/components'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Logo />
-      <MiniCart />
+      <Logo data-testid="logo" />
+      <MiniCart data-testid="mini-cart" />
     </header>
   )
 }
