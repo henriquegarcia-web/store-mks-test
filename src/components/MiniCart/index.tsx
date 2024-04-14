@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 
 import styles from './styles.module.scss'
+import { FiLoader } from 'react-icons/fi'
 
 import { MiniCartMenu } from '@/components'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -40,8 +41,12 @@ const MiniCart = () => {
           width={18}
           height={18}
         />
-        {cartDetails.cartTotalCount !== 0 && (
-          <p>{cartDetails.cartTotalCount}</p>
+        {!cartDetails.cartTotalCount ? (
+          <FiLoader className="icon_Loading" />
+        ) : (
+          cartDetails.cartTotalCount !== 0 && (
+            <p>{cartDetails.cartTotalCount}</p>
+          )
         )}
       </div>
       <AnimatePresence>
