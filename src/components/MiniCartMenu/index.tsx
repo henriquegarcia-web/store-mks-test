@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import styles from './styles.module.scss'
 import { IoCloseCircle } from 'react-icons/io5'
@@ -8,10 +8,11 @@ import { TbShoppingCartQuestion } from 'react-icons/tb'
 
 import { Button, MiniCartCard } from '@/components'
 
-import { ICartDetails, ICartProduct, IProduct } from '@/@types/store'
 import { formatCurrency } from '@/utils/functions/formatCurrency'
-
+import useScrollbar from '@/hooks/useScrollbar'
 import { useCart } from '@/contexts/CartProvider'
+
+import { ICartDetails, ICartProduct, IProduct } from '@/@types/store'
 
 interface IMiniCartMenu {
   handleCloseCart: () => void
@@ -24,6 +25,8 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
     updateCartProductQuantity,
     handleFinalizePurchases
   } = useCart()
+
+  const miniCartWrapperRef = useRef(null)
 
   const [updatingCart, setUpdatingCard] = useState(false)
 
@@ -51,6 +54,12 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
     }, 1000)
   }
 
+  const [containerHasScrollbar] = useScrollbar(miniCartWrapperRef)
+
+  useEffect(() => {
+    console.log(containerHasScrollbar)
+  }, [containerHasScrollbar])
+
   return (
     <div className={styles.minicart_menu}>
       <div className={styles.minicart_menu__header}>
@@ -64,7 +73,13 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
         </button>
       </div>
       <div className={styles.minicart_menu__content}>
-        <div className={styles.minicart_menu__content_wrapper}>
+        <div
+          className={`
+            ${styles.minicart_menu__content_wrapper}
+            ${containerHasScrollbar && styles.with_padding}
+          `}
+          ref={miniCartWrapperRef}
+        >
           <div className={styles.minicart_menu__content_products}>
             {!cartDetails.cartProducts.length ? (
               <div className={styles.minicart_menu__content_empty}>

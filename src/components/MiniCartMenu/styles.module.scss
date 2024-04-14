@@ -27,9 +27,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30px;
-      height: 30px;
+      width: 26px;
+      height: 26px;
       cursor: pointer;
+      border-radius: 100%;
 
       svg {
         transition: $transition;
@@ -38,7 +39,7 @@
         color: $color-black;
       }
 
-      background-color: transparent;
+      background-color: white;
 
       &:hover {
         svg {
@@ -57,8 +58,12 @@
     .minicart_menu__content_wrapper {
       display: flex;
       width: 100%;
-      padding: 10px 10px 10px 0;
+      padding: 10px 0;
       overflow: auto;
+
+      &.with_padding {
+        padding-right: 10px;
+      }
 
       &::-webkit-scrollbar {
         width: 4px;
