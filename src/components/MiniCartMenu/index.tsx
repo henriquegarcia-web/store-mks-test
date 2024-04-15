@@ -31,10 +31,6 @@ const MiniCartMenu = ({ handleCloseCart, cartDetails }: IMiniCartMenu) => {
 
   const [containerHasScrollbar] = useScrollbar(miniCartWrapperRef)
 
-  useEffect(() => {
-    console.log(containerHasScrollbar)
-  }, [containerHasScrollbar])
-
   return (
     <div className={styles.minicart_menu}>
       <div className={styles.minicart_menu__header}>

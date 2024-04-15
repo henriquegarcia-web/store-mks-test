@@ -1,34 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, RefObject } from 'react'
 
-function useScrollbar(elementRef: React.RefObject<HTMLElement>) {
-  const [containerHasScrollbar, setContainerHasScrollbar] = useState(false);
+function useScrollbar(elementRef: RefObject<HTMLElement>): [boolean] {
+  const [containerHasScrollbar, setContainerHasScrollbar] =
+    useState<boolean>(false)
 
   useEffect(() => {
-    const element = elementRef.current;
+    const element = elementRef.current
 
     const checkScrollbar = () => {
       if (element) {
-        const hasScrollbar = element.scrollHeight > element.clientHeight;
-        setContainerHasScrollbar(hasScrollbar);
+        const hasScrollbar = element.scrollHeight > element.clientHeight
+        setContainerHasScrollbar(hasScrollbar)
       }
-    };
+    }
 
-    checkScrollbar();
+    checkScrollbar()
 
-    const resizeObserver = new ResizeObserver(checkScrollbar);
+    let resizeObserver: ResizeObserver | undefined
 
-    if (element) {
-      resizeObserver.observe(element);
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(checkScrollbar)
+    } else {
+      import('resize-observer-polyfill').then((module) => {
+        resizeObserver = new module.default(checkScrollbar)
+      })
+    }
+
+    if (resizeObserver && element) {
+      resizeObserver.observe(element)
     }
 
     return () => {
-      if (element) {
-        resizeObserver.unobserve(element);
+      if (resizeObserver && element) {
+        resizeObserver.unobserve(element)
       }
-    };
-  }, [elementRef]);
+    }
+  }, [elementRef])
 
-  return [containerHasScrollbar];
+  return [containerHasScrollbar]
 }
 
-export default useScrollbar;
+export default useScrollbar
